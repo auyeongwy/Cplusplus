@@ -13,7 +13,7 @@
 CC = g++
 FLAGS = -O2 -march=native -Wall -std=c++0x
 
-all: STL1 postgresql1 Except
+all: STL1 postgresql1 Except BThread
 
 STL1: STL1.cpp
 	$(CC) $(FLAGS) -o STL1 STL1.cpp
@@ -23,7 +23,12 @@ postgresql1: postgresql1.cpp
 
 Except: Except.cpp
 	$(CC) $(FLAGS) -o Except Except.cpp
+	
+BThread: BThread.cpp
+	$(CC) $(FLAGS) -o BThread -lboost_thread BThread.cpp
 
 clean:
 	rm -f STL1
 	rm -f postgresql1
+	rm -f Except
+	rm -f BThread
